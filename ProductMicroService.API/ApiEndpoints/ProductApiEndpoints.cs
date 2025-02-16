@@ -38,8 +38,8 @@ public static class ProductApiEndpoints
             (searchString, StringComparison.OrdinalIgnoreCase));
 
             var products= productByProductName.Union(productByCategory);
-
-
+            if(products==null)
+                return Results.NotFound();
             return Results.Ok(products);
         });
 
